@@ -27,5 +27,5 @@ query: |-
   FROM campaign_performance_by_location cpbl
   WHERE metrics_clicks::NUMERIC > 0
   GROUP BY geo_target_constant_name
-  ORDER BY "clicks" DESC
+  ORDER BY "cpbl.total_clicks" DESC
   LIMIT 10
