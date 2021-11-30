@@ -17,7 +17,8 @@ query: |-
     , ROUND(avg(COALESCE(metrics_average_cpc::NUMERIC , 0))/ 1000000, 2)  as "Average CPC Per Day"
     , SUM(COALESCE(metrics_clicks::NUMERIC, 0)) as "Total Clicks"
     , SUM(COALESCE(metrics_impressions::NUMERIC, 0)) as "Total Impressions"
-    , (SELECT COUNT(DISTINCT(segments_date)) FROM campaign_performance cp2 WHERE cp1.campaign_name = cp2.campaign_name)
+    , (SELECT COUNT(DISTINCT(segments_date)) 
+    FROM campaign_performance cp2 WHERE cp1.campaign_name = cp2.campaign_name) as "Reported Days Running"
   FROM campaign_performance cp1
   GROUP BY campaign_name, segments_device
   ORDER BY campaign_name, "Total Impressions" DESC
