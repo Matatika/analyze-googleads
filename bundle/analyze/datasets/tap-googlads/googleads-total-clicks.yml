@@ -1,0 +1,43 @@
+version: datasets/v0.2
+source: googleads
+title: Total Clicks For All Campaigns Last 30 Days
+questions: How many clicks have all my campaigns had over the last 30 days?
+description: |-
+  Total clicks for all campaigns over the last 30 days.
+  #google-ads
+metadata: |-
+  {
+    "name": "cp",
+    "label": "Total Clicks For All Campaigns Last 30 Days", 
+    "related_table": {
+      "columns": [
+        {"name": "date", "label": "Date", "description": "Date"}
+      ],
+      "aggregates": [
+        {"name": "total_cost", "label": "Total Cost", "description": "Total Cost"}
+      ]
+    }
+  }
+visualisation: |-
+  {"chartjs-chart": 
+    {"chartType": "line", 
+      "options": {
+        "scales": {
+          "yAxes": [{
+            "ticks": {
+              "beginAtZero": true
+            }
+          }]
+        }
+      }
+    }
+  }
+query: |-
+  SELECT 
+    segments_date as "cp.date"
+    , SUM(COALESCE(metrics_clicks::NUMERIC, 0)) as "cp.total_cost"
+  FROM campaign_performance cp
+  WHERE segments_date::date > current_date - interval '30' day
+  AND segments_date::date <= current_date
+  GROUP BY segments_date
+  ORDER BY segments_date

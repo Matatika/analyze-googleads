@@ -1,0 +1,35 @@
+version: datasets/v0.2
+source: googleads
+title: All Campaign Stats
+questions: What are the stats of my campaign?
+description: |-
+  Stats breakdown of all Google Ads campaigns.
+  #google-ads
+metadata: |-
+  {
+    "name": "cp",
+    "label": "All Campaign Stats", 
+    "related_table": {
+      "columns": [
+        {"name": "campaign_name", "label": "Campaign Name", "description": "Campaign Name"}, 
+        {"name": "campaign_status", "label": "Campaign Status", "description": "Campaign Status"},
+        {"name": "total_cost", "label": "Total Cost", "description": "Total Cost"},
+        {"name": "average_cpc", "label": "Average CPC per Day", "description": "Average CPC per Day"},
+        {"name": "total_clicks", "label": "Total Clicks", "description": "Total Clicks"},
+        {"name": "total_impressions", "label": "Total Impressions", "description": "Total Impressions"},
+        {"name": "reported_days_running", "label": "Reported Days Running", "description": "Popularity"}
+      ]
+    }
+  }
+visualisation: '{"google-chart": {"chartType": "Table"}}'
+query: |-
+  SELECT 
+    campaign_name as "cp.campaign_name"
+    , MIN(campaign_status) as "cp.campaign_status"
+    , ROUND(SUM(metrics_cost_micros::NUMERIC) / 1000000, 2) as "cp.total_cost"
+    , ROUND(SUM(COALESCE(metrics_average_cpc::NUMERIC , 0)) / 10000000, 2) as "cp.average_cpc"
+    , SUM(COALESCE(metrics_clicks::NUMERIC, 0)) as "cp.total_clicks"
+    , SUM(COALESCE(metrics_impressions::NUMERIC, 0)) as "cp.total_impressions"
+    , COUNT(DISTINCT(segments_date)) as "cp.reported_days_running"
+  FROM campaign_performance cp
+  GROUP BY campaign_name

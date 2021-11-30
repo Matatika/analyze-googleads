@@ -1,0 +1,28 @@
+version: datasets/v0.2
+source: googleads
+title: Top 10 Locations by Ad Clicks - All Campaigns
+questions: What are my top 10 locations by clicks across all my data?
+description: |-
+  Top 10 locations by Google Ad clicks, across all campaigns.
+  #google-ads
+metadata: |-
+  {
+    "name": "cpbl",
+    "label": "Top 10 Locations by Ad Clicks - All Campaigns", 
+    "related_table": {
+      "columns": [
+        {"name": "clicks", "label": "Ad Clicks", "description": "Ad Clicks"}, 
+        {"name": "location", "label": "Location", "description": "Location"}
+      ]
+    }
+  }
+visualisation: '{"chartjs-chart": {"chartType": "bar"}}'
+query: |-
+  SELECT 
+    SUM(metrics_clicks::NUMERIC) "cpbl.clicks"
+    , geo_target_constant_name "cpbl.location"
+  FROM campaign_performance_by_location cpbl
+  WHERE metrics_clicks::NUMERIC > 0
+  GROUP BY geo_target_constant_name
+  ORDER BY "clicks" DESC
+  LIMIT 10
