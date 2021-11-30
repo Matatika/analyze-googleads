@@ -9,7 +9,7 @@ description: |-
 metadata:
 visualisation:
 query: |-
-  SELET 
+  SELECT 
     campaign_name as "Campaign Name"
     , MIN(campaign_status) as "Campaign Status"
     , segments_device as "Device"

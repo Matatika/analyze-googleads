@@ -13,13 +13,16 @@ metadata: |-
       "columns": [
         {"name": "clicks", "label": "Ad Clicks", "description": "Ad Clicks"}, 
         {"name": "location", "label": "Location", "description": "Location"}
+      ],
+      "aggregates": [
+        {"name": "total_clicks", "label": "Clicks", "description": "Clicks"}
       ]
     }
   }
 visualisation: '{"chartjs-chart": {"chartType": "bar"}}'
 query: |-
   SELECT 
-    SUM(metrics_clicks::NUMERIC) "cpbl.clicks"
+    SUM(metrics_clicks::NUMERIC) "cpbl.total_clicks"
     , geo_target_constant_name "cpbl.location"
   FROM campaign_performance_by_location cpbl
   WHERE metrics_clicks::NUMERIC > 0

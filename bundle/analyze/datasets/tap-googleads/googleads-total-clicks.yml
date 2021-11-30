@@ -14,7 +14,7 @@ metadata: |-
         {"name": "date", "label": "Date", "description": "Date"}
       ],
       "aggregates": [
-        {"name": "total_cost", "label": "Total Cost", "description": "Total Cost"}
+        {"name": "total_clicks", "label": "Total Clicks", "description": "Total Clicks"}
       ]
     }
   }
@@ -35,7 +35,7 @@ visualisation: |-
 query: |-
   SELECT 
     segments_date as "cp.date"
-    , SUM(COALESCE(metrics_clicks::NUMERIC, 0)) as "cp.total_cost"
+    , SUM(COALESCE(metrics_clicks::NUMERIC, 0)) as "cp.total_clicks"
   FROM campaign_performance cp
   WHERE segments_date::date > current_date - interval '30' day
   AND segments_date::date <= current_date
