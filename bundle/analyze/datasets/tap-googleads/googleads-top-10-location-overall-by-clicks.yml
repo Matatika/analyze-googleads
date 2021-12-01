@@ -1,5 +1,5 @@
 version: datasets/v0.2
-source: googleads
+source: tap-googleads
 title: Top 10 Locations by Ad Clicks - All Campaigns
 questions: What are my top 10 locations by clicks across all my data?
 description: |-

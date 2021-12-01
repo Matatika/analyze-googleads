@@ -1,5 +1,5 @@
 version: datasets/v0.2
-source: googleads
+source: tap-googleads
 title: All Campaign Stats
 questions: What are the stats of my campaign?
 description: |-

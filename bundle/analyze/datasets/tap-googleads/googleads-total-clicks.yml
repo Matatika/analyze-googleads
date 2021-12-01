@@ -1,5 +1,5 @@
 version: datasets/v0.2
-source: googleads
+source: tap-googleads
 title: Total Clicks For All Campaigns Last 30 Days
 questions: How many clicks have all my campaigns had over the last 30 days?
 description: |-

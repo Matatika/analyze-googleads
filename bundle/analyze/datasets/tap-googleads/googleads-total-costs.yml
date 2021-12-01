@@ -1,5 +1,5 @@
 version: datasets/v0.2
-source: googleads
+source: tap-googleads
 title: Total Costs For All Campaigns Last 30 Days
 questions: What are the costs of all my campaigns over the last 30 days?
 description: |-
