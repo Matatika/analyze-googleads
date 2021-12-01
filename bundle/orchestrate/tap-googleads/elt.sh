@@ -27,6 +27,4 @@ meltano invoke dbt run-operation drop_google_ads_stream_tables || true
 
 # Run the elt, and dbt commands and tests
 meltano elt "$EXTRACTOR" "$LOADER" --transform=skip
-meltano invoke dbt snapshot
-meltano invoke dbt run --full-refresh
-meltano invoke dbt test
+meltano invoke dbt run -m tap_googleads
