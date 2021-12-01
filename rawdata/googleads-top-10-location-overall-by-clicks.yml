@@ -1,0 +1,11 @@
+googleads-top-10-location-overall-by-clicks: |-
+  [{"cpbl.total_clicks": 12633, "cpbl.location": "USA"},
+  {"cpbl.total_clicks": 9557, "cpbl.location": "United Kingdom"},
+  {"cpbl.total_clicks": 6825, "cpbl.location": "Canada"},
+  {"cpbl.total_clicks": 2109, "cpbl.location": "India"},
+  {"cpbl.total_clicks": 1980, "cpbl.location": "Australia"},
+  {"cpbl.total_clicks": 1053, "cpbl.location": "Ireland"},
+  {"cpbl.total_clicks": 952, "cpbl.location": "China"},
+  {"cpbl.total_clicks": 316, "cpbl.location": "Germany"},
+  {"cpbl.total_clicks": 184, "cpbl.location": "Russia"},
+  {"cpbl.total_clicks": 88, "cpbl.location": "Brazil"}]
