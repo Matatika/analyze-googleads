@@ -37,7 +37,7 @@ query: |-
     segments_date as "cp.date"
     , SUM(COALESCE(metrics_clicks::NUMERIC, 0)) as "cp.total_clicks"
   FROM campaign_performance cp
-  WHERE segments_date::date > current_date - interval '30' day
+  WHERE segments_date::date > current_date - interval '30 day'
   AND segments_date::date <= current_date
   GROUP BY segments_date
   ORDER BY segments_date
