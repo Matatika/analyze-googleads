@@ -24,7 +24,7 @@ query: |-
   SELECT 
     SUM(metrics_clicks::NUMERIC) "cpbl.total_clicks"
     , geo_target_constant_name "cpbl.location"
-  FROM campaign_performance_by_location cpbl
+  FROM googleads_vw_campaign_performance_location cpbl
   WHERE metrics_clicks::NUMERIC > 0
   GROUP BY geo_target_constant_name
   ORDER BY "cpbl.total_clicks" DESC

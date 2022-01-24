@@ -36,7 +36,7 @@ query: |-
   SELECT 
     segments_date  as "cp.date"
     , ROUND(SUM(metrics_cost_micros::NUMERIC / 1000000), 2) as "cp.total_cost"
-  FROM campaign_performance cp
+  FROM googleads_vw_campaign_performance cp
   WHERE segments_date::date > current_date - interval '30 day'
   AND segments_date::date <= current_date
   GROUP BY segments_date

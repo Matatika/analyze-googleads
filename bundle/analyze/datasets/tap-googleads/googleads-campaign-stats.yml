@@ -31,5 +31,5 @@ query: |-
     , SUM(COALESCE(metrics_clicks::NUMERIC, 0)) as "cp.total_clicks"
     , SUM(COALESCE(metrics_impressions::NUMERIC, 0)) as "cp.total_impressions"
     , COUNT(DISTINCT(segments_date)) as "cp.reported_days_running"
-  FROM campaign_performance cp
+  FROM googleads_vw_campaign_performance cp
   GROUP BY campaign_name
