@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="analyze-googleads",
-    version="0.2.0",
+    version="0.3.0",
     description="Meltano project file bundle of Matatika datasets for Google Ads",
     packages=find_packages(),
     package_data={
