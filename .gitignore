@@ -8,15 +8,18 @@ env.bak/
 venv.bak/
 .env.dev
 
-
 # Converted HTML Datasets
 *.html
 html_charts/
-
-.project
+output/
 
 # Eclipse
 .project
 
 # vscode
 .vscode
+
+# Python build files
+*.egg-info
+build/
+__pycache__
