@@ -19,5 +19,5 @@ meltano invoke dbt deps
 meltano invoke dbt run-operation googleads_drop_google_ads_stream_tables || true
 
 # Run the elt, and dbt commands and tests
-meltano elt "$EXTRACTOR" "$LOADER" --transform=skip
+meltano elt "$EXTRACTOR" "$LOADER" --transform=skip --job_id="$EXTRACTOR"-"$LOADER"-"$IMPORTRUNNERID"
 meltano invoke dbt run -m tap_googleads
